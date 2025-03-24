@@ -66,9 +66,9 @@ public class ThreadingPractice {
     Thread main = Thread.currentThread();
     System.out.println(main.getName() + ", " + main.getId());
 
-    // Interestingly enough, by putting the main Thread outside that for loop, it in concurrence with everything in that loop!
+    // Interestingly enough, by putting the main Thread outside that for loop, it runs in concurrence with everything in that loop!
 
-    // Anyway, you can change it's name, see priority, and more!
+    // Anyway, you can change its name, see priority, and more!
     System.out.println(main.getPriority());
 
     // It looks like all threads start at a priority of 5. What is this priority though?
@@ -117,13 +117,11 @@ public class ThreadingPractice {
 
     // Let's do some recap of everything we've seen so far.
     Scanner input = new Scanner(System.in);
-    // Set a timeout so that the threads from section 1 can fully finish before we start section 2
-    // Is now not used due to having a thread that'll stop the other threads
+    // Set a timeout so that the threads from section 1 can fully finish before we start section 2 (Is now not used due to having a thread that'll stop the other threads)
     // TimeUnit.SECONDS.sleep(15);
     // System.out.println("\n--- Waiting for input to go to stage 2 ---");
-    /*
-     */
-    // Now here's a cool idea using threads. Obviously you can use threads to do a ton of calculations in parallel. But what if we decide that it's taking too long and we just want to test something further down in the file (like this lol)
+
+    // Now here's a cool idea using threads. Obviously you can use threads to do a ton of calculations in parallel. But what if we decide that it's taking too long, and we just want to test something further down in the file (like this lol)
     // Well what if we do a bit of shenanigans? I'll start by putting all of those threads from section 1 into a singular ArrayList.
 
 
@@ -138,10 +136,13 @@ public class ThreadingPractice {
 
     // But let's say I want to run a thread of type MultiThreadingDemo2 after those original threads we made are stopped. How would I do that?
 
-    // We can't just say multiThreadingDemo2.start() immediately, since I want this to run AFTER the previous set of threads is done. So what we can do instead is this!
+    // We can't just say multiThreadingDemo2.start() immediately, since I want this to run AFTER the previous set of threads is done, not at the same time. So what we can do instead is this!
     // Let's put another argument in the StopThread constructor, changing the invocation from "new StopThread(threads)" to "new StopThread(threads, multiThreadingDemo2)"
 
-    // So basically, I've put the thread I want to run as an argument in the constructor of the StopThread. Then when i execute the code to stop the first set of threads, I'll start the thread I want to run.
+    // So basically, I've put the thread I want to run as an argument in the constructor of the StopThread. Then, when I execute the code to stop the first set of threads, I'll start the thread I want to run.
     // Is there a better method than this? Probably, but I think this is a clear and effective way to do it.
+
+
+    // Also am now moving to a separate file (ThreadingPractice2.java)
   }
 }
